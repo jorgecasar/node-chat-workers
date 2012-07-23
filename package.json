@@ -1,0 +1,20 @@
+{
+  "name": "demo-websocket",
+  "version": "1.0.0",
+  "description": "A WebSocket demo",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jorgecasar/node-websocket-demo.git"
+  },
+  "author": "Jorge del Casar <jorge.casar@gmail.com>",
+  "engines": {
+    "node": ">=0.1.98-0"
+  },
+  "dependencies": {
+    "socket.io": "latest"
+  },
+  "scripts": {
+    "start": "server.js"
+  },
+  "subdomain": "chat.jorgecasar"
+}
