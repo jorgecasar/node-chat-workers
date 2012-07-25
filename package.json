@@ -1,6 +1,6 @@
 {
   "name": "demo-websocket",
-  "version": "1.0.0-2",
+  "version": "1.0.0-3",
   "description": "A WebSocket demo",
   "repository": {
     "type": "git",

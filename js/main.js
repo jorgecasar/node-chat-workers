@@ -100,7 +100,7 @@ var chatDemo = (function($, io){
         });
 
         // Cargamos el nickname almacenado en localStorage.
-        $chat.on('loadNickname', function(event, data){
+        $chat.on('autoLogin', function(event, data){
             $chat_nickname.get(0).nickname.value = data.nickname;
             $chat_nickname.trigger('submit');
         });
@@ -113,7 +113,9 @@ var chatDemo = (function($, io){
     var loadNickname = function(){
         var ls = window.localStorage;
         var nickname = ls.getItem('chat_nickname');
-        $chat.trigger('loadNickname', { nickname: nickname} );
+        if( nickname ) {
+            $chat.trigger('autoLogin', { nickname: nickname} );
+        }
     }
     // Eventos de los formularios
     var formsEvents = function() {
