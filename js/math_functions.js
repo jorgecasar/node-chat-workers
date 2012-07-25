@@ -1,5 +1,8 @@
+
+// Calcula si el número es primo.
 var isPrime = function(number){
-    num = parseInt(number, 10);
+    "use strict";
+    var num = parseInt(number, 10);
     var result = '';
     var prime = true;
     if (isNaN(num) || num <= 0)
@@ -31,8 +34,11 @@ var isPrime = function(number){
     return result;
 };
 
+// Calcula los divisores de un número.
 var divisores = function(number) {
-    var num = parseInt( number );
+    "use strict";
+    var num = parseInt( number, 10);
+    var result;
     if ( isNaN( num ) || num < 0)
     {
         result = number + " no es un número válido. ¡Prueba de nuevo!";
