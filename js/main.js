@@ -98,8 +98,23 @@ var chatDemo = (function($, io){
             data.nickname = 'worker';
             $chat.trigger('write', data);
         });
-    };
 
+        // Cargamos el nickname almacenado en localStorage.
+        $chat.on('loadNickname', function(event, data){
+            $chat_nickname.get(0).nickname.value = data.nickname;
+            $chat_nickname.trigger('submit');
+        });
+    };
+    var saveNickname = function(nickname){
+        var ls = window.localStorage;
+        ls.setItem('chat_nickname', nickname);
+    }
+
+    var loadNickname = function(){
+        var ls = window.localStorage;
+        var nickname = ls.getItem('chat_nickname');
+        $chat.trigger('loadNickname', { nickname: nickname} );
+    }
     // Eventos de los formularios
     var formsEvents = function() {
         // Captura del evento submit del formulario de nombre de usuario.
@@ -110,11 +125,12 @@ var chatDemo = (function($, io){
             // Utilizando las propiedades definidas en el HTML.
             if( this.checkValidity() )
             {
-                var nicknameCallback = function(success){
+                var nicknameCallback = function(success, nickname){
                     if(success)
                     {
                         $chat.trigger('hide_login');
                         $chat.trigger('show_chat');
+                        saveNickname(nickname);
                     }
                     else
                     {
@@ -205,6 +221,7 @@ var chatDemo = (function($, io){
         // Lanzamos la funciones necesarias.
         chatEvents();
         formsEvents();
+        loadNickname();
         socketEvents();
         workerEvents();
     };

@@ -10,6 +10,7 @@ var port   = process.env.PORT || 8080;
 // Declaramos la lista de usuarios.
 var users  = [];
 
+// Declaramos un
 var contentTypesByExtension = {
     'txt': "text/plain",
     'html': "text/html",
@@ -79,7 +80,7 @@ io.sockets.on('connection', function (socket) {
       io.sockets.emit('welcome', { nickname: nickname, users: users } );
     }
     // Llamamos la función de callback indicanda en cliente.
-    callback(is_new_user);
+    callback(is_new_user, nickname);
   });
 
   // Escuchamos la desconexión de un socket.
